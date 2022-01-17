@@ -4,6 +4,7 @@ const { MongoClient } = require('mongodb');
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
 const Artist = require('./datasources/artist');
+const Artwork = require('./datasources/Artwork');
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ const server = new ApolloServer({
 	resolvers,
 	dataSources: () => ({
 		artistAPI: new Artist(client.db().collection('artists')),
+		artworkAPI: new Artwork(client.db().collection('artworks')),
 	}),
 });
 
