@@ -13,12 +13,15 @@ class Artwork extends MongoDataSource {
 		return artworks;
 	}
 
+	async getArtworksByIDs(ids) {
+		const artworks = await this.findManyByIds(ids);
+		artworks.map((artwork) => this.convertID(artwork));
+		return artworks;
+	}
+
 	convertID(artwork) {
 		artwork.id = artwork._id;
 		artwork.artistID = artwork.artist_id;
-
-		delete artwork._id;
-		delete artwork.artist_id;
 	}
 }
 
