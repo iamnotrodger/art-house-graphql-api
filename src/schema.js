@@ -22,7 +22,7 @@ const typeDefs = gql`
 		images: [Image!]!
 		artistIDs: [ID!]!
 		artworkIDs: [ID!]!
-		artists: [Artwork!]!
+		artists: [Artist!]!
 		artworks: [Artwork!]!
 	}
 
